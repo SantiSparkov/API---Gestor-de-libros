@@ -1,0 +1,323 @@
+{
+  "info": {
+    "name": "API de Gestión de Libros",
+    "description": "Colección de pruebas para la API REST de gestión de libros",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🏠 Endpoints Principales",
+      "item": [
+        {
+          "name": "GET - Información de la API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "GET - Estado de Salud",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "📚 Gestión de Libros (CRUD)",
+      "item": [
+        {
+          "name": "GET - Obtener todos los libros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "POST - Crear nuevo libro",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"El Hobbit\",\n  \"author\": \"J.R.R. Tolkien\",\n  \"publicationYear\": 1937,\n  \"genre\": \"Fantasía\",\n  \"description\": \"Una aventura épica en la Tierra Media\",\n  \"pageCount\": 310,\n  \"language\": \"Español\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener libro por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        },
+        {
+          "name": "PUT - Actualizar libro",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"El Hobbit - Edición Especial\",\n  \"description\": \"Una aventura épica en la Tierra Media - Edición revisada\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        },
+        {
+          "name": "DELETE - Eliminar libro",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🔍 Búsquedas Internas",
+      "item": [
+        {
+          "name": "GET - Buscar libros por query",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/search?q=tolkien",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "tolkien"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Buscar libros por género",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/search?q=fantasía",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "fantasía"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🌐 Búsquedas Externas (Google Books)",
+      "item": [
+        {
+          "name": "GET - Buscar en Google Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/external/search?q=harry+potter&maxResults=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "external", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "harry potter"
+                },
+                {
+                  "key": "maxResults",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Buscar por autor en Google Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/external/author?author=J.K.+Rowling&maxResults=3",
+              "host": ["{{base_url}}"],
+              "path": ["api", "external", "author"],
+              "query": [
+                {
+                  "key": "author",
+                  "value": "J.K. Rowling"
+                },
+                {
+                  "key": "maxResults",
+                  "value": "3"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Buscar por género en Google Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/external/subject?subject=fantasy&maxResults=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "external", "subject"],
+              "query": [
+                {
+                  "key": "subject",
+                  "value": "fantasy"
+                },
+                {
+                  "key": "maxResults",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "GET - Obtener libro específico de Google Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/external/book/PGR2AwAAQBAJ",
+              "host": ["{{base_url}}"],
+              "path": ["api", "external", "book", "PGR2AwAAQBAJ"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🧪 Casos de Prueba Especiales",
+      "item": [
+        {
+          "name": "POST - Crear libro con datos mínimos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Libro de Prueba\",\n  \"author\": \"Autor de Prueba\",\n  \"publicationYear\": 2024\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "POST - Crear libro con datos inválidos (error)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"\",\n  \"author\": \"\",\n  \"publicationYear\": 999\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/books",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books"]
+            }
+          }
+        },
+        {
+          "name": "GET - Buscar libro inexistente (error)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/books/999",
+              "host": ["{{base_url}}"],
+              "path": ["api", "books", "999"]
+            }
+          }
+        },
+        {
+          "name": "GET - Búsqueda externa sin parámetros (error)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/external/search",
+              "host": ["{{base_url}}"],
+              "path": ["api", "external", "search"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
