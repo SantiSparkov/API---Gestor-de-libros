@@ -2,10 +2,6 @@
 
 Una API REST completa para la gestión de libros desarrollada con Node.js, Express.js y TypeScript.
 
-## 🎯 Estado del Proyecto
-
-¡El proyecto está **100% completo y funcionando**! Se han implementado todos los requisitos solicitados en la consigna.
-
 ## 🚀 Características
 
 - **Operaciones CRUD completas** para libros
